@@ -1,0 +1,364 @@
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text:400,600italic);
+
+html {
+    height: 100vh;
+    width: 100vw;
+}
+
+
+body {
+    height: 100vh;
+    width: 800px;
+    padding:0px;
+    margin: 0 auto;
+    background-color: white;
+    color: black;
+    font-weight: 300; 
+    font-size: 13pt;
+}
+
+
+/* text styling */
+strong {
+  font-weight: 600;         
+}
+
+.warm {
+  color: steelblue;
+  text-align: justify;
+}
+
+.cool {
+  color: #ccccff;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+
+/* these are all the same for now, but easy to modify individually */
+#container-ad, #container-error, #container-exp, #container-consent, #container-instructions, #container-questionnaire {
+    background: white;
+    margin: 0px auto;
+}
+
+/* ad.html  - the ad that people view first */
+#adlogo {
+    width: 140px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    margin-right: 1em;
+}
+
+/* consent.html - the consent form */
+#consent {
+  margin: 0 auto;
+  margin-top: 0;
+  width: 800px;
+  font-size: 100%;
+}
+
+.legal {
+  text-align: justify;
+  font-size: 11pt;
+  line-height: 1.1em;
+}
+
+#trial {
+  margin: 0 auto;
+  width: 800px;
+  text-align: center;
+}
+
+#query {
+  color: darkgray;
+}
+
+.question {
+  margin-bottom: 30px;
+}
+
+/* errors */
+#error img {
+  padding-right: 10px;
+  padding-top: 15px;
+}
+
+#container-exp {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#chooser-buttons {
+  margin-top: 100px;
+}
+
+#chooser-buttons .btn {
+  width: 150px;
+  height: 150px;
+  margin: 2px;
+  font-size: 1.6em;
+}
+
+#test-done-btn {
+  font-size: 2.2em;
+  font-weight: bold;
+}
+
+#loading {
+  margin: 30px;
+}
+
+#setup {
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+
+#setup input {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+#setup button {
+  margin-bottom: 20px;
+}
+
+#setup #partnerid {
+  margin-bottom: 20px;
+  width: 400px;
+  display: block;
+}
+
+.alert {
+  display: none;
+  margin-top: 20px;
+}
+
+#play-button {
+  visibility: hidden;
+}
+
+#stage {
+  padding-top: 10px;
+}
+
+
+#summary { 
+  font-size: 1.5em;
+  padding: 30px;
+}
+
+#summary .left {
+  display: inline-block;
+  width: 300px;
+}
+
+#summary .right {
+  display: inline-block;
+  width: 200px;
+}
+
+
+#continueModal {
+  margin-top: 200px;
+  text-align: center;
+}
+
+.modal-footer {
+  border-top: none;
+  text-align: center;
+}
+
+div.email {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+div.email textarea {
+  font-size: 2em;
+  text-align: center;
+}
+
+span.counter {
+  opacity: .7;
+}
+
+
+/* Instructions */
+
+#main {
+	margin: 0 auto;
+	width: 800px;
+	font-size: 100%;
+}
+
+.continue  {
+    font-size: 2em;
+	width: 5em;
+    height: 2.5em;
+	margin: 20px 20px;
+}
+
+.instruct p {
+	text-align: justify;
+}
+
+.instruct .prompt {
+	text-align: center;
+	font-style: italic;
+	font-size: 100%;
+	margin: 0 auto;
+	margin-top: 30px;
+	width: 500px;
+}
+
+
+/* Questionnaire */
+.questionnaire {
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.questiontext {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.questionnaire #buttons {
+    width: 450px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.questionnaire #buttons input {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+
+.questionnaire #warning {
+    color: red;
+    font-weight: bold;
+}
+
+.questionnaire table {
+    margin: 0 auto;
+	
+    /* Border stuff: */
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0.25em;
+    border: none;
+}
+
+.questionnaire tr {
+    display: block;
+    border-bottom: 1px dashed white;
+}
+
+.questionnaire tr:last-child { border: 0; }
+
+.questionnaire td {
+    padding-right: 0.25em;
+    vertical-align: middle;
+    border-width: 0 1px;
+    border: none;
+    margin: 20px;
+    padding-bottom: 10px;
+}
+.questionnaire td:first-child, td + td {border-left: 0; }
+.questionnaire td:last-child { padding-right: 0; border-right: 0; }
+
+.answer {
+	padding-left: 3em;
+}
+
+.questionnaire textarea {
+    width: 320px;
+    height: 130px;
+}
+.questionnaire form {
+}
+.questionnaire ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+/* Debriefing form */
+
+#debriefing {
+	width: 640px;
+        margin: 0 auto;
+}
+
+#debriefingtext {
+	margin: 0 auto;
+	padding: 10px 20px;
+	font-size: 90%;
+	text-align: justify;
+}
+#affirmationbox {
+	position: relative;
+	margin:  0 auto;
+	border: 1px dotted white; 
+	padding: 10px 20px;
+	vertical-align: middle;
+}
+#affirmationbox p {
+	text-align: left;
+	font-style: italic;
+}
+#affirmationbox  table {
+	border-spacing: 20px;
+}
+#affirmationbox  td {
+	vertical-align: middle;
+	font-size: 100%;
+	color: black;
+	height: 50px;
+	cursor: pointer;
+}
+#affirmative {
+	background: white;
+	overflow: hidden;
+	font-weight: bold;
+	width: 10em;
+}
+#negative {
+	background: white;
+	font-size: 100%;
+	width: 25em;
+}
+
+
+
+#container-instructions .instruction-body {
+    text-align: left;
+    font-family: "Georgia";
+    font-size: 16pt;
+    margin-top: 20px;
+    line-height: 1.3em;
+}
+
+#container-instructions img {
+    margin-top: 10px;
+    margin-top: 10px;
+}
+
+#btn-continue {
+    margin-top: 20px;
+}
+
+#aboveStage {
+    margin-top: 20px;
+    font-size: 1.5em;
+}

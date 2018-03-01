@@ -670,7 +670,7 @@ var jsPsych = (function() {
       if (keyboardNotAllowed) {
         go();
       } else {
-        DOM_target.append('<div style="width:600px;margin:auto"><button id="jspsych-fullscreen-btn" class="jspsych-btn">Ga naar fullscreen</button></div>');
+        DOM_target.append('<div style="width:600px;margin:auto"><button id="jspsych-fullscreen-btn" class="jspsych-btn">Go to fullscreen</button></div>');
         $('#jspsych-fullscreen-btn').on('click', function() {
           var element = document.documentElement;
           if (element.requestFullscreen) {

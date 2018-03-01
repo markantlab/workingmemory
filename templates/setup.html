@@ -1,0 +1,129 @@
+<!doctype html>
+<!-- 
+  The exp.html is the main form that
+  controls the experiment.
+
+  see comments throughout for advice
+-->
+<html>
+    <head>
+        <title>Psychology Experiment</title>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">        
+        <link rel="Favicon" href="/static/favicon.ico" />
+
+        <!-- third-party libraries -->
+		<script src="static/lib/jquery.min.js" type="text/javascript"> </script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"> </script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js" type="text/javascript"> </script>
+        
+        <!-- stylesheets -->
+        <link rel=stylesheet href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
+        <link rel=stylesheet href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" type="text/css">
+        <link rel=stylesheet href="static/css/style.css" type="text/css">
+
+        <!-- starting point -->
+        <script type="text/javascript">
+
+            function start() {
+
+                $('.selectpicker').selectpicker({
+                    width: 300,
+                });
+
+                check_btn = $('#check-button');
+                play_btn = $('#play-button');
+                participantid = $('#participantid');
+                partnerid = $('#partnerid');
+
+
+                function run(id, partnerid) {
+                    window.location = '/exp?workerId='+id+'&assignmentId='+partnerid+'&hitId=None&mode=debug';
+                }
+
+                function check() {
+                    entered = participantid.val();
+                    ran = Math.floor(100000 + Math.random() * 900000);
+                    pid = (entered=="") ? 'throwaway' + ran : entered;
+                    participantid.val(pid);
+
+                    console.log('checking for id:', pid);
+                    $.ajax({url: 'check?uniqueId='+pid,
+                            type: 'GET',
+                            async: false,
+                            success: function(resp) {
+                                handle_response(resp);
+                            }
+                    });
+
+                };
+
+                function handle_response(data) {
+                    check_btn.button('reset');
+
+                    if (data.valid_id) {
+                        if (partnerid.val() == "None") {
+                            console.log("valid id for seed");
+                            $('#seed-valid').css('display', 'block');                            
+                        } else {
+                            console.log("valid id, with "+partnerid.val()+" as partner");
+                            $('#all-valid').css('display', 'block');                            
+                        }
+
+                        play_btn.css('visibility', 'visible')
+                        play_btn.on('click', function(e) {
+                                run(participantid.val(), partnerid.val())
+                        });
+                    } else {
+                        console.log("invalid id");
+                        $('#invalid').css('display', 'block');
+                    }
+
+                }
+
+                check_btn.on('click', function(e) {
+                    $('.alert').css('display', 'none');
+                    check_btn.button('loading');
+                    check();
+                })
+            };
+        </script>
+
+    </head>
+    <body onload='start();'>
+	    <noscript>
+			<h1>Warning: Javascript seems to be disabled</h1>
+			<p>This website requires that Javascript be enabled on your browser.</p>
+			<p>Instructions for enabling Javascript in your browser can be found 
+			<a href="http://support.google.com/bin/answer.py?hl=en&answer=23852">here</a><p>
+		</noscript>
+
+            <div id="container-exp">
+
+                <div id="setup">
+
+                    <p><b>Enter participant ID</b>                    
+                    <br />(Leave empty to test without saving data)</p>
+                    <div class="input-group input-group-lg">
+                    <input id="participantid" type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <button id="check-button" type="button" class="btn btn-default btn-lg" aria-label="Left Align" data-loading-text="Checking..." autocomplete="off">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </button>
+
+                    <button id="play-button" type="button" class="btn btn-default btn-lg" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </button>
+
+                    <div id=all-valid class="alert alert-success" role="alert">Press play to begin</div>                    
+                    <div id=seed-valid class="alert alert-warning" role="alert">No partner specified, press play to run as seed</div>
+                    <div id=invalid class="alert alert-danger" role="alert">Participant ID already exists</div>
+
+
+                </div>
+                
+            </div>
+
+    </body>
+</html>
