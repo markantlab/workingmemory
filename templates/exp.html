@@ -6,6 +6,7 @@
     <script src="static/lib/jspsych.js"></script>
     <script src="static/lib/jspsych-text.js"></script>
     <script src="static/lib/jspsych-single-stim.js"></script>
+    <script src="static/lib/jspsych-survey-text.js"></script>
     <script src="static/lib/jspsych-instructions.js"></script>
     
     <script type="text/javascript">
@@ -52,6 +53,17 @@ var instructions_block = {
   'begin. Please press ENTER to start.</p>'],
   key_forward: 13,
 };
+
+
+//instructions
+var debriefing_block = {
+  type: 'instructions',
+  pages: ['<p><strong>Task complete</strong></p>' +
+  '<p>Additional instructions</p>'],
+  key_forward: 13,
+};
+
+
 
 //first practice block
 var practice_block11 = {
@@ -1395,12 +1407,17 @@ var exp_block158 = {
 //experimental phase ends here
 
 //recall block (???)
+//var recall_block = {
+//  type: "single-stim",
+//  stimulus: ['<p style="font-weight:bold;font-size:50px;color:#487a6c;">???</p><p style="padding:0">Continue with ENTER</p>'],
+//  choices: [13],
+//  is_html: true
+//};
+
 var recall_block = {
-  type: "single-stim",
-  stimulus: ['<p style="font-weight:bold;font-size:50px;color:#487a6c;">???</p><p style="padding:0">Continue with ENTER</p>'],
-  choices: [13],
-  is_html: true
-};
+  type: "survey-text",
+  questions: [{'prompt': 'Enter the digits separated by spaces:'}]
+}
 
 //timeline structure
 var timeline = [];
@@ -1554,6 +1571,7 @@ timeline.push(exp_block156);
 timeline.push(exp_block157);
 timeline.push(exp_block158);
 timeline.push(recall_block);
+timeline.push(debriefing_block);
 
 
 //function to save the data
