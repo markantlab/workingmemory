@@ -2,6 +2,7 @@
 <head>
     <title>Memory test</title>
     <link href="static/css/jspsych.css" rel="stylesheet" type="text/css">
+    <link href="static/css/style.css" rel="stylesheet" type="text/css">
     <script src="static/lib/jquery.min.js"></script>
     <script src="static/lib/jspsych.js"></script>
     <script src="static/lib/jspsych-text.js"></script>
@@ -21,7 +22,7 @@
     <script src="static/js/psiturk.js" type="text/javascript"> </script>
     
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
 </head>
 <script>
@@ -35,22 +36,35 @@ function output(arr) {
 };
 output(['uniqueId', uniqueId]);
 
+
+var INSTR_HTML = '<h1>Instructions</h1>'+
+                 '<p>Thank you for participating in my research project!</p>'+
+                 '<p>Please complete the following task on a computer and then '+
+                 'return to the survey in order to submit your responses.</p>'+
+                 '<p>The following task consists of two parts. First, you will '+
+                 'see equations on the screen, which you must verify '+
+                 'in your head. These equations can be correct (e.g. (4 ÷ 1) + 2 = 6) '+
+                 'or incorrect (e.g. (5 x 2) / 3 = 4). Your first task is to judge '+
+                 'the correctness of each equation. You will do this by pressing a '+
+                 'key to indicate whether it is correct or not (← = yes, → = no). '+
+                 'After this decision, you will see a digit on the screen. Your '+
+                 'second task is to memorize this digit in order to recall it later on.</p>'+
+                 '<p>After two to six equations (which you are supposed to judge) and '+
+                 'digits (which you are supposed to memorize), you will be asked to '+
+                 'recall the previous digits in the order they were presented. Whenever '+
+                 'this happens, please type in all the digits you still remember since '+
+                 'the last recall. If you only remember a couple, but not all digits, '+
+                 'it\'s okay to only name the ones that you do remember. After you '+
+                 'named all these digits, you can start the next round by pressing ENTER.</p>'+
+                 '<p>You can start the task by pressing ENTER when you are ready!</p>';
+
+var DEBRIEF_HTML = '<p>Thank you for completing the memory task!</p>'+
+                   '<p><b>Please go back to the survey tab on your browser to submit your responses.</b></p>';
+
 //instructions
 var instructions_block = {
   type: 'instructions',
-  pages: ['<p><strong>Welcome to the experiment!</strong></p>' +
-  '<p>The following task consists of two parts. First, you will see equations on the screen, which you are supposed ' +
-  'to verify in your head. These equations can be correct (e.g. <i>(4 ÷ 1) + 2 = 6</i>) or not (e.g. <i>(5 x 2) / 3 ' +
-  '= 4</i>). Your first task is to judge the correctness of each equation. . You will do this by pressing a key to ' +
-  'indicate whether it is correct or not (&larr; = yes, &rarr; = no). After this decision you will see a digit on the ' +
-  'screen. Your second task is to memorise this digit in order to recall it later on.</p>' +
-  '<p>After two to six euqations (which you are supposed to judge) and digits (which you are supposed to memorise), ' +
-  'you will see three question marks (<i>???</i>). Whenever this happens, please overtly recall all the digits you still ' +
-  'remember since the last <i>???</i>. Often it&#039;s easier to name them in the order in which they were presented, but ' +
-  'this isn&#039;t really necessary. If you only remember a couple, but not all digits, it&#039;s okay to only name the ones that ' +
-  'you do remember. After you named all these digits, you can start the next round by pressing ENTER.</p>' +
-  '<p>The experimenter will write down your answers. Should you still have questions, please ask them now. Otherwise we can ' +
-  'begin. Please press ENTER to start.</p>'],
+  pages: [INSTR_HTML],
   key_forward: 13,
 };
 
@@ -58,8 +72,7 @@ var instructions_block = {
 //instructions
 var debriefing_block = {
   type: 'instructions',
-  pages: ['<p><strong>Task complete</strong></p>' +
-  '<p>Additional instructions</p>'],
+  pages: [DEBRIEF_HTML],
   key_forward: 13,
 };
 
@@ -1416,7 +1429,8 @@ var exp_block158 = {
 
 var recall_block = {
   type: "survey-text",
-  questions: [{'prompt': 'Enter the digits separated by spaces:'}]
+  questions: ['Enter the digits separated by spaces:'],
+  columns: [20],
 }
 
 //timeline structure

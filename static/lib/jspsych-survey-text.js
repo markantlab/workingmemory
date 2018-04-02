@@ -15,6 +15,8 @@ jsPsych.plugins['survey-text'] = (function() {
 
   plugin.trial = function(display_element, trial) {
 
+    console.log(trial);
+
     trial.preamble = typeof trial.preamble == 'undefined' ? "" : trial.preamble;
     if (typeof trial.rows == 'undefined') {
       trial.rows = [];
@@ -41,6 +43,8 @@ jsPsych.plugins['survey-text'] = (function() {
     }));
 
     $('#jspsych-survey-text-preamble').html(trial.preamble);
+
+    console.log(trial.questions);
 
     // add questions
     for (var i = 0; i < trial.questions.length; i++) {
