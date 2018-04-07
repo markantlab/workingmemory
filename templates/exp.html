@@ -56,7 +56,17 @@ var INSTR_HTML = '<h1>Instructions</h1>'+
                  'the last recall. If you only remember a couple, but not all digits, '+
                  'it\'s okay to only name the ones that you do remember. After you '+
                  'named all these digits, you can start the next round by pressing ENTER.</p>'+
+                 '<p>Pressing ENTER in order to begin with two practice rounds.</p>';
+
+
+var INSTR2_HTML = '<h1>Instructions</h1>'+
+                 '<p>You are now about to begin the main task. Please do your best to 1) accurately '+
+                 'respond according to whether each math equation is correct, and 2) remember all of '+
+                 'the digits that follow the equations.</p>'+
+                 '<p>Remember, this is a memory task so do not use any supplemental materials '+
+                 'to aid your performance (e.g. paper and pencil).</p>' +
                  '<p>You can start the task by pressing ENTER when you are ready!</p>';
+
 
 var DEBRIEF_HTML = '<p>Thank you for completing the memory task!</p>'+
                    '<p><b>Please go back to the survey tab on your browser to submit your responses.</b></p>';
@@ -68,6 +78,11 @@ var instructions_block = {
   key_forward: 13,
 };
 
+var instructions_block_2 = {
+  type: 'instructions',
+  pages: [INSTR2_HTML],
+  key_forward: 13,
+};
 
 //instructions
 var debriefing_block = {
@@ -1429,7 +1444,7 @@ var exp_block158 = {
 
 var recall_block = {
   type: "survey-text",
-  questions: ['Enter the digits separated by spaces:'],
+  questions: ['Enter the digits in order, separated by spaces:'],
   columns: [20],
 }
 
@@ -1450,6 +1465,7 @@ timeline.push(practice_block24);
 timeline.push(practice_block25);
 timeline.push(practice_block26);
 timeline.push(recall_block);
+timeline.push(instructions_block_2);
 timeline.push(exp_block11);
 timeline.push(exp_block12);
 timeline.push(exp_block13);
