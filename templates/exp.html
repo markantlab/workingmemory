@@ -1446,6 +1446,10 @@ var recall_block = {
   type: "survey-text",
   questions: ['Enter the digits in order, separated by spaces:'],
   columns: [20],
+  on_finish: function(data) {
+    console.log('saving data');
+    saveData();
+  }
 }
 
 //timeline structure
